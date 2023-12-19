@@ -37,7 +37,11 @@ def Guess_letter(Word, PlayerWon, Fails, PlayersProgress):
             if LetterGuessed == letter:
                 print(f"{LetterGuessed} is in the word!")
                 LetterInWord = True
-                PlayersProgress[WordLetters.index(LetterGuessed)] = LetterGuessed
+                indexnumber = 0
+                for letter in WordLetters:
+                    if letter == LetterGuessed:
+                        PlayersProgress[indexnumber] = LetterGuessed
+                    indexnumber += 1
         if LetterInWord != True:
             print(f"{LetterGuessed} is not in the word!")
             Fails += 1
