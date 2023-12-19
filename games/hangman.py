@@ -55,6 +55,9 @@ def Guess_letter(Word, PlayerWon, Fails, PlayersProgress):
         else:
             print("That's not the correct word!")
             Fails += 1
+    
+    else:
+        print("That's not a valid option!")
         
     if PlayerWon == True:
         return True, Fails, PlayersProgress
