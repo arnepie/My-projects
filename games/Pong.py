@@ -32,7 +32,6 @@ class Ball:
         pygame.draw.circle(screen, black, (self.circleX, self.circleY), 15)
         time.sleep(0.005)
 
-        pygame.display.flip()
 
     def check_direction(self, padX1, padX2, padY1, padY2):
         green = (0, 255, 0)
@@ -56,10 +55,10 @@ class Ball:
         if self.circleY < 0:
             self._ChangeModifierY = 1
 
-        if padX1-10 < self.circleX < padX1+10 and padY1 - 50 < self.circleY < padY1 + 50:
+        if padX1-10 < self.circleX-15 < padX1+10 and padY1 - 50 < self.circleY < padY1 + 50:
             #print("Touched")
             self._ChangeModifierX = 1
-        if padX2-10 < self.circleX < padX2+10 and padY2 - 50 < self.circleY < padY2 + 50:
+        if padX2-10 < self.circleX+15 < padX2+10 and padY2 - 50 < self.circleY < padY2 + 50:
             #print("Touched")
             self._ChangeModifierX = -1
 
@@ -75,7 +74,7 @@ class Pad:
     def draw_pad(self, padX, padY, colour):
         pygame.draw.rect(screen, colour, pygame.Rect(padX, padY, 15, 100))
 
-        pygame.display.flip()
+
 
 ball1 = Ball(screen)
 
@@ -91,6 +90,7 @@ while running:
     pad1.draw_pad(padX1, padY1, black)
     pad2.draw_pad(padX2, padY2, black)
     ball1.check_direction(padX1, padX2, padY1, padY2)
+    pygame.display.flip()
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
